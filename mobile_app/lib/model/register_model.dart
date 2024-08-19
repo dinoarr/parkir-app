@@ -11,7 +11,16 @@ class RegisterModel {
     required this.password,
   });
 
-  Map<String, String> toJson() {
+  factory RegisterModel.fromJson(Map<String, dynamic> json) {
+    return RegisterModel(
+      username: json['username'],
+      email: json['email'],
+      phoneNumber: json['phone_number'],
+      password: json['password'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
     return {
       'username': username,
       'email': email,

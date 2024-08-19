@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:mobile_app/auth/register.dart';
 import 'package:mobile_app/screens/home.dart';
+import 'package:mobile_app/api/repository.dart'; // Import repository untuk API request
 
 class login extends StatefulWidget {
   const login({super.key});
@@ -10,12 +13,43 @@ class login extends StatefulWidget {
 }
 
 class _LoginState extends State<login> {
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
   bool _obscureText = true;
 
   void _togglePasswordVisibility() {
     setState(() {
       _obscureText = !_obscureText;
     });
+  }
+
+  Future<void> _login() async {
+    final email = _emailController.text;
+    final password = _passwordController.text;
+    final apiClient = ApiClient();
+
+    final response = await apiClient.post('login', {
+      'email': email,
+      'password': password,
+    });
+
+    print('Response status: ${response.statusCode}');
+    print('Response body: ${response.body}');
+
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body);
+      // Simpan token jika ada
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => Home(),
+        ),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Invalid credentials')),
+      );
+    }
   }
 
   @override
@@ -61,28 +95,25 @@ class _LoginState extends State<login> {
                         ],
                       ),
                     ),
-                    const SizedBox(
-                      height: 30,
-                    ),
+                    const SizedBox(height: 30),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Text(
-                            "Your Name",
+                            "Email",
                             style: TextStyle(
                                 fontSize: 14, fontWeight: FontWeight.w600),
                           ),
-                          const SizedBox(
-                            height: 15,
-                          ),
+                          const SizedBox(height: 15),
                           Container(
                             width: screenWidth * 0.85,
-                            child: const TextField(
+                            child: TextField(
+                              controller: _emailController,
                               decoration: InputDecoration(
-                                hintText: 'John Doe',
-                                prefixIcon: Icon(Icons.person_outline_sharp),
+                                hintText: 'Email',
+                                prefixIcon: Icon(Icons.email_outlined),
                                 filled: true,
                                 fillColor: Colors.white,
                                 border: OutlineInputBorder(
@@ -93,20 +124,17 @@ class _LoginState extends State<login> {
                               ),
                             ),
                           ),
-                          const SizedBox(
-                            height: 20,
-                          ),
+                          const SizedBox(height: 20),
                           const Text(
                             "Password",
                             style: TextStyle(
                                 fontSize: 14, fontWeight: FontWeight.w600),
                           ),
-                          const SizedBox(
-                            height: 15,
-                          ),
+                          const SizedBox(height: 15),
                           Container(
                             width: screenWidth * 0.85,
                             child: TextField(
+                              controller: _passwordController,
                               decoration: InputDecoration(
                                 hintText: 'Password',
                                 prefixIcon: const Icon(Icons.lock_outlined),
@@ -125,7 +153,6 @@ class _LoginState extends State<login> {
                                 ),
                               ),
                               obscureText: _obscureText,
-                              maxLength: 8,
                             ),
                           ),
                         ],
@@ -142,14 +169,7 @@ class _LoginState extends State<login> {
                         SizedBox(
                           width: screenWidth * 0.85,
                           child: ElevatedButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Home(),
-                                ),
-                              );
-                            },
+                            onPressed: _login,
                             style: ElevatedButton.styleFrom(
                               backgroundColor: const Color(0xFF04E762),
                               shape: RoundedRectangleBorder(
@@ -167,9 +187,7 @@ class _LoginState extends State<login> {
                             ),
                           ),
                         ),
-                        const SizedBox(
-                          height: 25,
-                        ),
+                        const SizedBox(height: 25),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -178,7 +196,8 @@ class _LoginState extends State<login> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Register()),
+                                    builder: (context) => Register(),
+                                  ),
                                 );
                               },
                               child: const Text(
@@ -189,15 +208,14 @@ class _LoginState extends State<login> {
                                 ),
                               ),
                             ),
-                            SizedBox(
-                              width: 35,
-                            ),
+                            SizedBox(width: 35),
                             GestureDetector(
                               onTap: () {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Register()),
+                                    builder: (context) => Register(),
+                                  ),
                                 );
                               },
                               child: const Text(

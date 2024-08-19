@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class ApiClient {
-  static const String baseUrl = 'http://192.168.1.20:8080/api';
+  static const String baseUrl = 'http://127.0.0.1:8000/api';
 
   // Metode untuk melakukan POST request
   Future<http.Response> post(String endpoint, Map<String, dynamic> body) async {
