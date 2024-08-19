@@ -3,7 +3,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:mobile_app/auth/login.dart';
 import 'package:mobile_app/api/repository.dart';
+import 'package:mobile_app/components/alert_account.dart';
 import 'package:mobile_app/model/register_model.dart';
+import 'package:mobile_app/screens/home.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -54,12 +56,19 @@ class _RegisterState extends State<Register> {
     print('Response body: ${response.body}');
 
     if (response.statusCode == 201) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Registration successful')),
+      // Menampilkan halaman alert sukses
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const alert()),
       );
+
+      // Menunggu selama 2 detik
+      await Future.delayed(const Duration(seconds: 2));
+
+      // Kembali ke halaman sebelumnya dan arahkan ke Home
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const login()),
+        MaterialPageRoute(builder: (context) => const Home()),
       );
     } else {
       final responseData = jsonDecode(response.body);
