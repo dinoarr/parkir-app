@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_app/model/location_model.dart';
 import 'package:mobile_app/screens/booking_input.dart';
 
 class Modal extends StatelessWidget {
+  final Location location;
+
+  const Modal({super.key, required this.location});
+
   @override
   Widget build(BuildContext context) {
     return FractionallySizedBox(
@@ -21,7 +26,7 @@ class Modal extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text(
-                  'Price list',
+                  'Price List',
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
@@ -40,7 +45,7 @@ class Modal extends StatelessWidget {
               ],
             ),
             SizedBox(height: 10),
-            const Expanded(
+            Expanded(
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -53,9 +58,9 @@ class Modal extends StatelessWidget {
                         color: Colors.black,
                       ),
                     ),
-                    const Text('IDR 3000/hours'),
+                    Text('IDR ${location.carPrice}/hour'),
                     SizedBox(height: 20),
-                    const Text(
+                    Text(
                       'For Motorcycle',
                       style: TextStyle(
                         fontSize: 18,
@@ -63,7 +68,7 @@ class Modal extends StatelessWidget {
                         color: Colors.black,
                       ),
                     ),
-                    Text('IDR 2000/hours'),
+                    Text('IDR ${location.bikePrice}/hour'),
                   ],
                 ),
               ),
@@ -80,11 +85,11 @@ class Modal extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => BookingFormScreen(),
+                    builder: (context) => BookingFormScreen(location: location),
                   ),
                 );
               },
-              child: const Center(
+              child: Center(
                 child: Text(
                   'Park Now',
                   style: TextStyle(

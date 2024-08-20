@@ -1,35 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:mobile_app/auth/login.dart';
+import 'package:mobile_app/model/location_model.dart';
 import 'package:mobile_app/screens/booking.dart';
 import 'package:mobile_app/screens/location.dart';
 
-class ParkingNearbySection extends StatefulWidget {
-  @override
-  State<ParkingNearbySection> createState() => _ParkingNearbySectionState();
-}
+class ParkingNearbySection extends StatelessWidget {
+  final List<Location> parkingLocations;
 
-class _ParkingNearbySectionState extends State<ParkingNearbySection> {
-  final List<Map<String, String>> parkingLocations = [
-    {
-      "name": "Nama Tempat 1",
-      "price": "IDR 3000",
-      "carSpots": "15 Car Spots",
-      "bikeSpots": "15 Bike Spots",
-    },
-    {
-      "name": "Nama Tempat 2",
-      "price": "IDR 3500",
-      "carSpots": "20 Car Spots",
-      "bikeSpots": "10 Bike Spots",
-    },
-    {
-      "name": "Nama Tempat 3",
-      "price": "IDR 2500",
-      "carSpots": "10 Car Spots",
-      "bikeSpots": "5 Bike Spots",
-    },
-  ];
+  ParkingNearbySection({required this.parkingLocations});
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +58,7 @@ class _ParkingNearbySectionState extends State<ParkingNearbySection> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => BookingPage(),
+                    builder: (context) => BookingPage(location: location),
                   ),
                 );
               },
@@ -114,7 +92,7 @@ class _ParkingNearbySectionState extends State<ParkingNearbySection> {
                                   ),
                                 ),
                                 Text(
-                                  location["name"]!,
+                                  location.name,
                                   style: const TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.bold,
@@ -127,7 +105,7 @@ class _ParkingNearbySectionState extends State<ParkingNearbySection> {
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 Text(
-                                  location["price"]!,
+                                  "IDR ${location.carPrice.toStringAsFixed(0)}",
                                   style: const TextStyle(
                                     fontSize: 13,
                                     fontWeight: FontWeight.bold,
@@ -152,7 +130,7 @@ class _ParkingNearbySectionState extends State<ParkingNearbySection> {
                                 size: 16, color: Color(0xFF45C47C)),
                             const SizedBox(width: 4),
                             Text(
-                              location["carSpots"]!,
+                              "${location.carSpots} Car Spots",
                               style: const TextStyle(fontSize: 8),
                             ),
                             const SizedBox(width: 11),
@@ -160,7 +138,7 @@ class _ParkingNearbySectionState extends State<ParkingNearbySection> {
                                 size: 16, color: Color(0xFF45C47C)),
                             const SizedBox(width: 4),
                             Text(
-                              location["bikeSpots"]!,
+                              "${location.bikeSpots} Bike Spots",
                               style: const TextStyle(fontSize: 8),
                             ),
                           ],

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_app/components/modal_booking.dart';
-import 'package:mobile_app/screens/home.dart';
+import 'package:mobile_app/model/location_model.dart';
 import 'package:mobile_app/screens/location.dart';
 
 class BookingPage extends StatelessWidget {
-  const BookingPage({super.key});
+  final Location location;
+
+  const BookingPage({super.key, required this.location});
 
   @override
   Widget build(BuildContext context) {
@@ -24,12 +26,7 @@ class BookingPage extends StatelessWidget {
                       color: Color(0xFF45C47C),
                     ),
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => LocationPage(),
-                        ),
-                      );
+                      Navigator.pop(context);
                     },
                   ),
                   Align(
@@ -55,30 +52,31 @@ class BookingPage extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Padding(
+                            Padding(
                               padding: EdgeInsets.all(10),
                               child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Column(
                                     children: [
                                       Text(
-                                        "Nama Lokasi",
+                                        location.name,
                                         style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.w700),
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w700,
+                                        ),
                                       ),
                                     ],
                                   ),
                                   Column(
                                     children: [
                                       Text(
-                                        "IDR 3000",
+                                        "IDR ${location.carPrice}",
                                         style: TextStyle(
-                                            fontSize: 14,
-                                            color: Color(0xFF45C47C),
-                                            fontWeight: FontWeight.w500),
+                                          fontSize: 14,
+                                          color: Color(0xFF45C47C),
+                                          fontWeight: FontWeight.w500,
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -92,32 +90,31 @@ class BookingPage extends StatelessWidget {
                                   top: BorderSide(color: Colors.grey),
                                 ),
                               ),
-                              child: const Padding(
+                              child: Padding(
                                 padding: EdgeInsets.all(4.0),
                                 child: Row(
                                   children: [
                                     Text(
                                       "Spots For",
                                       style: TextStyle(
-                                          fontSize: 14,
-                                          color: Color(0xFF606470)),
+                                        fontSize: 14,
+                                        color: Color(0xFF606470),
+                                      ),
                                     ),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
+                                    SizedBox(width: 10),
                                     Icon(
                                       Icons.motorcycle,
                                       color: Color(0xFF45C47C),
                                     ),
-                                    SizedBox(
-                                      width: 10,
+                                    SizedBox(width: 10),
+                                    Icon(
+                                      Icons.directions_car,
+                                      color: Color(0xFF45C47C),
                                     ),
-                                    Icon(Icons.directions_car,
-                                        color: Color(0xFF45C47C)),
                                   ],
                                 ),
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ),
@@ -126,15 +123,13 @@ class BookingPage extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(
-              height: 80,
-            ),
+            SizedBox(height: 80),
             Container(
               color: Color(0xFFF5F3F4),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Row(
+                  Row(
                     children: [
                       SizedBox(width: 10),
                       Text(
@@ -148,7 +143,7 @@ class BookingPage extends StatelessWidget {
                     ],
                   ),
                   IconButton(
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.arrow_drop_down_circle_sharp,
                       color: Color(0xFF45C47C),
                     ),
@@ -158,7 +153,7 @@ class BookingPage extends StatelessWidget {
                         backgroundColor: Colors.transparent,
                         isScrollControlled: true,
                         builder: (context) {
-                          return Modal();
+                          return Modal(location: location);
                         },
                       );
                     },

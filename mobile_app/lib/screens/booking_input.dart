@@ -1,20 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_app/screens/order_detail.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: BookingFormScreen(),
-    );
-  }
-}
+import 'package:mobile_app/model/location_model.dart';
 
 class BookingFormScreen extends StatefulWidget {
+  final Location location;
+
+  const BookingFormScreen({Key? key, required this.location}) : super(key: key);
+
   @override
   _BookingFormScreenState createState() => _BookingFormScreenState();
 }
@@ -66,7 +58,7 @@ class _BookingFormScreenState extends State<BookingFormScreen> {
             _buildTimePicker(),
             SizedBox(height: 16),
             _buildDropdown("Select Location", Icons.location_on,
-                selectedLocation, ['Location 1', 'Location 2']),
+                selectedLocation, [widget.location.name]),
             SizedBox(height: 16),
             _buildDropdown("Select Vehicle", Icons.directions_car,
                 selectedVehicle, ['Car', 'Motorcycle']),

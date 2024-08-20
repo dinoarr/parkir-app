@@ -111,7 +111,7 @@ class _LoginState extends State<login> {
                             width: screenWidth * 0.85,
                             child: TextField(
                               controller: _emailController,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 hintText: 'Email',
                                 prefixIcon: Icon(Icons.email_outlined),
                                 filled: true,
@@ -214,7 +214,7 @@ class _LoginState extends State<login> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => Register(),
+                                    builder: (context) => Home(),
                                   ),
                                 );
                               },
