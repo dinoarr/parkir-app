@@ -36,7 +36,7 @@
     </style>
 </head> 
 <body style="font-family: Inter" class="bg-[#F9F9F9]">
-    <nav class="fixed top-0 z-30 w-full bg-neutral-100 text-black border-b border-gray-200">
+    <nav class="fixed top-0 z-30 w-full bg-neutral-100 text-black border-b border-gray-100">
         <div class="px-3 py-3 lg:px-5 lg:pl-3">
             <div class="flex items-center justify-between">
                 <div class="flex items-center justify-start rtl:justify-end">
@@ -53,16 +53,16 @@
                         <div>
                             <button type="button" class="flex text-sm bg-gray-800 rounded-full focus:ring-2 focus:ring-gray-500" aria-expanded="false" data-dropdown-toggle="dropdown-user">
                                 <span class="sr-only">Open user menu</span>
-                                <img class="w-8 h-8 rounded-full" src="{{ Auth::user()->image ? asset(Auth::user()->image) : 'https://www.pngkey.com/png/full/115-1150152_default-profile-picture-avatar-png-green.png' }}" alt="User Image">
+                                <img class="w-8 h-8 rounded-full" src="https://www.pngkey.com/png/full/115-1150152_default-profile-picture-avatar-png-green.png" alt="User Image">
                             </button>
                         </div>
                         <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 text-black rounded shadow" id="dropdown-user">
                             <div class="px-4 py-3" role="none">
                                 <p class="text-sm text-gray-900 " role="none">
-                                    {{ Auth::user()->username }}
+                                   
                                 </p>
                                 <p class="text-sm font-medium text-gray-900 truncate" role="none">
-                                    {{ Auth::user()->email }}
+                                
                                 </p>
                             </div>
                             <ul class="py-1" role="none">
@@ -83,16 +83,16 @@
         </div>
     </nav>
     
-    <aside id="logo-sidebar" class="fixed top-0 left-0 z-20 w-64 h-screen pt-20 bg-neutral-100 border-r sidebar-open sm:sidebar-closed" aria-label="Sidebar">
+    <aside id="logo-sidebar" class="fixed top-0 left-0 z-20 w-64 h-screen pt-20 bg-neutral-100 shadow-2xl sidebar-open sm:sidebar-closed" aria-label="Sidebar">
         <div class="h-full px-3 pb-4 overflow-y-auto bg-neutral-100 border-r">
             <ul class="space-y-2 font-medium text-sm">
                 <a href="{{--{{ route('admin.dashboard') }}--}}" class="mb-2">
-                    <li class="p-4 rounded-md hover:bg-green-600 hover:text-white  {{--{{ request()->routeIs('admin.dashboard') ? 'bg-green-600 text-white' : '' }}--}}">
+                    <li class="p-4 rounded-md hover:bg-green-600  hover:text-white  {{--{{ request()->routeIs('admin.dashboard') ? 'bg-green-600 text-white' : '' }}--}}">
                         <i class="fa-solid fa-house-chimney mx-3"></i>Dashboard
                     </li>
                 </a>
-                <li class="p-4 rounded-md hover:bg-green-600 hover:text-white flex items-center justify-between cursor-pointer" id="master-data-toggle">
-                    <div>
+                <li class="p-4 rounded-md hover:bg-green-600  hover:text-white flex items-center justify-between cursor-pointer" id="master-data-toggle">
+                    <div>       
                         <i class="fa-solid fa-database mx-3"></i>
                         Master Data
                     </div>
@@ -102,31 +102,31 @@
                 </li>
                 <ul class="space-y-2 ml-8 hidden" id="master-data-menu">
                     <a href="{{--{{ route('admin.brand.index') }}--}}" class="block mb-2">
-                        <li class="p-2 rounded-md hover:bg-green-600 hover:text-white  {{--{{ request()->routeIs('admin.brand.index') ? 'bg-green-600 text-white' : '' }}--}}">
+                        <li class="p-2 rounded-md hover:bg-green-600  hover:text-white  {{--{{ request()->routeIs('admin.brand.index') ? 'bg-green-600 text-white' : '' }}--}}">
                             <i class="fa-solid fa-store mx-3"></i>
                             Brand
                         </li>
                     </a>
                     <a href="{{--{{ route('admin.category.index') }}" class="block mb-2">
-                        <li class="p-2 rounded-md hover:bg-green-600 hover:text-white  {{--{{ request()->routeIs('admin.category.index') ? 'bg-green-600 text-white' : '' }}--}}">
+                        <li class="p-2 rounded-md hover:bg-green-600  hover:text-white  {{--{{ request()->routeIs('admin.category.index') ? 'bg-green-600 text-white' : '' }}--}}">
                             <i class="fa-solid fa-tag mx-3"></i>
                             Category
                         </li>
                     </a>
                     <a href="{{--{{ route('admin.products.index') }}" class="block mb-2">
-                        <li class="p-2 rounded-md hover:bg-green-600 hover:text-white  {{--{{ request()->routeIs('admin.products.index') ? 'bg-green-600 text-white' : '' }}--}}">
+                        <li class="p-2 rounded-md hover:bg-green-600  hover:text-white  {{--{{ request()->routeIs('admin.products.index') ? 'bg-green-600 text-white' : '' }}--}}">
                             <i class="fa-solid fa-box mx-3"></i>
                             Product
                         </li>
                     </a>
                     <a href="{{--{{ route('admin.warehouse.index') }}--}}" class="block mb-2">
-                        <li class="p-2 rounded-md hover:bg-green-600 hover:text-white  {{--{{ request()->routeIs('admin.warehouse.index') ? 'bg-green-600 text-white' : '' }}--}}">
+                        <li class="p-2 rounded-md hover:bg-green-600  hover:text-white  {{--{{ request()->routeIs('admin.warehouse.index') ? 'bg-green-600 text-white' : '' }}--}}">
                             <i class="fa-solid fa-warehouse mx-3"></i>
                             Warehouse
                         </li>
                     </a>
                 </ul>
-                <li class="p-4 rounded-md hover:bg-green-600 hover:text-white flex items-center justify-between cursor-pointer" id="stock-management-toggle">
+                <li class="p-4 rounded-md hover:bg-green-600  hover:text-white flex items-center justify-between cursor-pointer" id="stock-management-toggle">
                     <div>
                         <i class="fa-solid fa-file-circle-check mx-3"></i>
                         Stock Management
@@ -137,7 +137,7 @@
                 </li>
                 <ul class="space-y-2 ml-8 hidden" id="stock-management-menu">
                     <a href="{{--{{ route('admin.receivingNotes.index') }}--}}" class="block mb-2">
-                        <li class="p-2 rounded-md hover:bg-green-600 hover:text-white  {{--{{ request()->routeIs('admin.receivingNotes.index') ? 'bg-green-600 text-white' : '' }}--}}">
+                        <li class="p-2 rounded-md hover:bg-green-600  hover:text-white  {{--{{ request()->routeIs('admin.receivingNotes.index') ? 'bg-green-600 text-white' : '' }}--}}">
                             <i class="fa-solid fa-clipboard-list mx-3"></i>
                             Receiving Notes
                         </li>
@@ -145,7 +145,7 @@
                 </ul>
                 
                 <a href="{{--{{ route('admin.transaction.index') }}--}}" class="block mb-2">
-                    <li class="p-4 rounded-md hover:bg-green-600 hover:text-white flex items-center justify-between  {{--{{ request()->routeIs('admin.transaction.index') ? 'bg-green-600 text-white' : '' }}--}}">
+                    <li class="p-4 rounded-md hover:bg-green-600  hover:text-white flex items-center justify-between  {{--{{ request()->routeIs('admin.transaction.index') ? 'bg-green-600 text-white' : '' }}--}}">
                         <div>
                             <i class="fa-solid fa-wallet mx-3"></i>
                             Transaction
@@ -156,7 +156,7 @@
                     </li>
                 </a>
                 <a href="{{--{{ route('admin.report') }}--}}" class="block mb-2">
-                    <li class="p-4 rounded-md hover:bg-green-600 hover:text-white flex items-center justify-between  {{--{{ request()->routeIs('admin.report') ? 'bg-green-600 text-white' : '' }}--}}">
+                    <li class="p-4 rounded-md hover:bg-green-600  hover:text-white flex items-center justify-between  {{--{{ request()->routeIs('admin.report') ? 'bg-green-600 text-white' : '' }}--}}">
                         <div>
                             <i class="fa-solid fa-file mx-3"></i>
                             Report
@@ -166,7 +166,7 @@
                         </span>
                     </li>
                 </a>
-                <li class="p-4 rounded-md hover:bg-green-600 hover:text-white flex items-center justify-between cursor-pointer" id="settings-toggle">
+                <li class="p-4 rounded-md hover:bg-green-600  hover:text-white flex items-center justify-between cursor-pointer" id="settings-toggle">
                     <div>
                         <i class="fa-solid fa-gear mx-3"></i>
                         Settings
@@ -177,13 +177,13 @@
                 </li>
                 <ul class="space-y-2 ml-8 hidden" id="settings-menu">
                     <a href="{{--{{ route('admin.user.index') }}--}}" class="block mb-2">
-                        <li class="p-2 rounded-md hover:bg-green-600 hover:text-white  {{--{{ request()->routeIs('admin.user.index') ? 'bg-green-600 text-white' : '' }}--}}">
+                        <li class="p-2 rounded-md hover:bg-green-600  hover:text-white  {{--{{ request()->routeIs('admin.user.index') ? 'bg-green-600 text-white' : '' }}--}}">
                             <i class="fa-solid fa-users mx-3"></i>
                             User
                         </li>
                     </a>
                     <a href="{{--{{ route('admin.currency.index') }}--}}" class="block mb-2">
-                        <li class="p-2 rounded-md hover:bg-green-600 hover:text-white  {{--{{ request()->routeIs('admin.currency.index') ? 'bg-green-600 text-white' : '' }}--}}">
+                        <li class="p-2 rounded-md hover:bg-green-600  hover:text-white  {{--{{ request()->routeIs('admin.currency.index') ? 'bg-green-600 text-white' : '' }}--}}">
                             <i class="fa-solid fa-circle-dollar-to-slot mx-3"></i>
                             Currency
                         </li>

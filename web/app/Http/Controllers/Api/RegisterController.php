@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Http\Resources\UserResource;
+use App\Http\Resources\UserResources;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -43,7 +43,7 @@ class RegisterController extends Controller
         return response()->json([
             'status' => 'success',
             'message' => 'User registered successfully',
-            'user' => new UserResource($user),  
+            'user' => new UserResources($user),  
         ], 201);
     }
 }
