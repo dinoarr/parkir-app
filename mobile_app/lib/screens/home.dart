@@ -1,4 +1,3 @@
-// home.dart
 import 'package:flutter/material.dart';
 import 'package:mobile_app/auth/register.dart';
 import 'package:mobile_app/components/carousel_cars.dart';
@@ -7,6 +6,7 @@ import 'package:mobile_app/components/navigationbar.dart';
 import 'package:mobile_app/components/carousel_location.dart';
 import 'package:mobile_app/screens/activity_page.dart';
 import 'package:mobile_app/screens/location.dart';
+import 'package:mobile_app/screens/vehicle_list.dart';
 import 'package:mobile_app/screens/wallet.dart';
 import 'package:mobile_app/api/repository.dart'; // Import the repository
 import 'package:mobile_app/api/locationRepository.dart'; // Import the location repository
@@ -72,8 +72,9 @@ class _HomeState extends State<Home> {
               index: _currentIndex,
               children: [
                 FutureBuilder<List<Location>>(
-                  future: _locationsFuture, // Use the future here
-                  builder: (BuildContext context, AsyncSnapshot<List<Location>> snapshot) {
+                  future: _locationsFuture,
+                  builder: (BuildContext context,
+                      AsyncSnapshot<List<Location>> snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return Center(child: CircularProgressIndicator());
                     } else if (snapshot.hasError) {
@@ -88,6 +89,7 @@ class _HomeState extends State<Home> {
                 ),
                 LocationPage(),
                 ActivityPage(),
+                VehicleList(),
               ],
             ),
           ],
@@ -119,19 +121,29 @@ class HomePageContent extends StatelessWidget {
             width: double.infinity,
             height: 150,
             color: const Color(0xFF82F4B1),
-            child: Stack(
+            child: const Stack(
               children: [
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        "Enroll Now",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Enroll Now",
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white),
+                          ),
+                          Text(
+                            "Enjoying park with our app",
+                            style: TextStyle(color: Colors.white),
+                          )
+                        ],
                       ),
                     ],
                   ),
@@ -139,7 +151,7 @@ class HomePageContent extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 40),
+          SizedBox(height: 20),
           ParkingNearbySection(parkingLocations: parkingLocations),
           SizedBox(height: 14),
           HistoryCarousel(),
