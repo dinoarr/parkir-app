@@ -42,6 +42,7 @@ class _ActivityScreenState extends State<ActivityPage>
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
+        automaticallyImplyLeading: false,
         title: Text(
           'Your Activity',
           style: TextStyle(color: Colors.green),

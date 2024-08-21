@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:mobile_app/api/repository.dart'; // Update with actual path
 import 'package:mobile_app/api/vehicleRepository.dart'; // Update with actual path
 import 'package:mobile_app/model/vehicle_model.dart'; // Update with actual path
+=======
+>>>>>>> e846241ea8da6f93893d225cd520e54226e50f62
 
 class AddVehiclePage extends StatefulWidget {
   @override
@@ -10,6 +13,7 @@ class AddVehiclePage extends StatefulWidget {
 
 class _AddVehiclePageState extends State<AddVehiclePage> {
   String? selectedVehicleType = 'Mobil';
+<<<<<<< HEAD
   final TextEditingController plateController = TextEditingController();
   final TextEditingController brandController = TextEditingController();
   final TextEditingController modelController = TextEditingController();
@@ -20,6 +24,16 @@ class _AddVehiclePageState extends State<AddVehiclePage> {
     {'type': 'Mobil', 'icon': Icons.directions_car},
     {'type': 'Motor', 'icon': Icons.motorcycle},
   ];
+=======
+  final List<Map<String, dynamic>> vehicleTypes = [
+    {'type': 'Mobil', 'icon': Icons.directions_car},
+    {'type': 'Motor', 'icon': Icons.motorcycle},
+  ];
+
+  final TextEditingController plateController = TextEditingController();
+  final TextEditingController brandController = TextEditingController();
+  final TextEditingController modelController = TextEditingController();
+>>>>>>> e846241ea8da6f93893d225cd520e54226e50f62
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +46,12 @@ class _AddVehiclePageState extends State<AddVehiclePage> {
         ),
         backgroundColor: Color(0xFF45c47c),
         leading: IconButton(
+<<<<<<< HEAD
           icon: Icon(Icons.arrow_back),
+=======
+          color: Colors.white,
+          icon: Icon(Icons.arrow_back_ios),
+>>>>>>> e846241ea8da6f93893d225cd520e54226e50f62
           onPressed: () => Navigator.pop(context),
         ),
       ),
@@ -101,6 +120,7 @@ class _AddVehiclePageState extends State<AddVehiclePage> {
                 child: SizedBox(
                   width: screenWidth * 0.85,
                   child: ElevatedButton(
+<<<<<<< HEAD
                     onPressed: () async {
                       try {
                         final vehicle = Vehicle(
@@ -116,6 +136,10 @@ class _AddVehiclePageState extends State<AddVehiclePage> {
                         // Handle error
                         print(e);
                       }
+=======
+                    onPressed: () {
+                      // Aksi saat tombol "Tambah Kendaraan" ditekan
+>>>>>>> e846241ea8da6f93893d225cd520e54226e50f62
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF04E762),

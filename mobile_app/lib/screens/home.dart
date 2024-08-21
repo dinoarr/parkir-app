@@ -6,8 +6,13 @@ import 'package:mobile_app/components/navigationbar.dart';
 import 'package:mobile_app/components/carousel_location.dart';
 import 'package:mobile_app/screens/activity_page.dart';
 import 'package:mobile_app/screens/location.dart';
+<<<<<<< HEAD
 import 'package:mobile_app/screens/vehicle_list.dart';
 import 'package:mobile_app/screens/wallet.dart';
+=======
+import 'package:mobile_app/screens/user_profile.dart';
+import 'package:mobile_app/screens/vehicle_list.dart';
+>>>>>>> e846241ea8da6f93893d225cd520e54226e50f62
 import 'package:mobile_app/api/repository.dart'; // Import the repository
 import 'package:mobile_app/api/locationRepository.dart'; // Import the location repository
 import 'package:mobile_app/model/location_model.dart'; // Import the location model
@@ -90,6 +95,10 @@ class _HomeState extends State<Home> {
                 LocationPage(),
                 ActivityPage(),
                 VehicleList(),
+<<<<<<< HEAD
+=======
+                UserProfile(),
+>>>>>>> e846241ea8da6f93893d225cd520e54226e50f62
               ],
             ),
           ],
