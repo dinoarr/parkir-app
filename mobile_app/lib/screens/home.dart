@@ -6,6 +6,7 @@ import 'package:mobile_app/components/navigationbar.dart';
 import 'package:mobile_app/components/carousel_location.dart';
 import 'package:mobile_app/screens/activity_page.dart';
 import 'package:mobile_app/screens/location.dart';
+import 'package:mobile_app/screens/user_profile.dart';
 import 'package:mobile_app/screens/vehicle_list.dart';
 import 'package:mobile_app/api/repository.dart'; // Import the repository
 import 'package:mobile_app/api/locationRepository.dart'; // Import the location repository
@@ -89,6 +90,7 @@ class _HomeState extends State<Home> {
                 LocationPage(),
                 ActivityPage(),
                 VehicleList(),
+                UserProfile(),
               ],
             ),
           ],
